@@ -42,7 +42,34 @@ public class CalcTCPServer {
 			DataOutputStream outToClient = new DataOutputStream(
 					connectionSocket.getOutputStream());
 
+            
             arithQuestion = inFromClient.readLine();
+
+            while(arithQuestion != "DONE") {
+                String currentAnswer = evalEx(arithQuestion) + "\n";
+
+                arithAnswer = currentAnswer;
+                outToClient.writeBytes(arithAnswer); 
+
+                arithQuestion = inFromClient.readLine();
+            }
+
+            arithAnswer = "CLOSE\n";
+            outToClient.writeBytes(arithAnswer);            
         }
+
+    }
+
+    /*
+     * Private method evalEx() to parse input string fo an arithmetic expression 
+     * and calculate the answer.
+     * Input:String expression containing the input string
+     * Output:
+     */
+    private static String evalEx(String expression) {
+        String result = "";
+
+        
+        return result;
     }
 }
