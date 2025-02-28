@@ -28,12 +28,21 @@ public class CalcTCPServer {
 
         //While loop is always true to enable server to run until connection is closed
         while (true) {
-            //
+            //ServerSocket to store the successful connection. 
             Socket connectionSocket = welcomeSocket.accept();
 
             System.out.println ("Connection to CalcTCPClient successful!");
 		    System.out.println ("Waiting for input from CalcTCPClient.....");
 
+            //
+            BufferedReader inFromClient = new BufferedReader(
+					new InputStreamReader(connectionSocket.getInputStream()));
+
+            //
+			DataOutputStream outToClient = new DataOutputStream(
+					connectionSocket.getOutputStream());
+
+            arithQuestion = inFromClient.readLine();
         }
     }
 }
