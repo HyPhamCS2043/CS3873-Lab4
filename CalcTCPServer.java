@@ -35,15 +35,15 @@ public class CalcTCPServer {
             System.out.println ("Connection to CalcTCPClient successful!");
 		    System.out.println ("Waiting for input from CalcTCPClient.....");
 
-            //
             BufferedReader inFromClient = new BufferedReader(
 					new InputStreamReader(connectionSocket.getInputStream()));
 
-            //
 			DataOutputStream outToClient = new DataOutputStream(
 					connectionSocket.getOutputStream());
 
             
+            //Read in the input string from the client. While the input string is
+            //not DONE, keep reading in input.
             arithQuestion = inFromClient.readLine();
 
             while(arithQuestion != "DONE\n") {
@@ -55,6 +55,7 @@ public class CalcTCPServer {
                 arithQuestion = inFromClient.readLine();
             }
 
+            //Message to indicate the connection is closed.
             arithAnswer = "CLOSE\n";
             outToClient.writeBytes(arithAnswer);            
         }
@@ -100,7 +101,7 @@ public class CalcTCPServer {
                 break;
         }
         
-        
+
         result = String.valueOf(answer);
         return result;
     }
