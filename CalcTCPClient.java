@@ -90,7 +90,7 @@ public class CalcTCPClient {
 
         //Check if the server has received the last message: "DONE\n"
         System.out.println(arithmeticOutput);
-        if (arithmeticOutput == "CLOSE") {
+        if (arithmeticOutput.equals("CLOSE")) {
             //Print out the summary of the session
             System.out.println("Q&A END**********************\n" 
                             + "Total characters sent: " + totalCharSent + "\n"
