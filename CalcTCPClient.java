@@ -17,7 +17,7 @@ public class CalcTCPClient {
         //Input stream to accept String input from text file
 		BufferedReader inFromUser = new BufferedReader(new FileReader("questions.txt"));
 
-		Socket clientSocket = new Socket(args[0], 6789);
+		Socket clientSocket = new Socket(args[0], 2424);
 
 		DataOutputStream outToCalcServer = new DataOutputStream( 
 				clientSocket.getOutputStream());
