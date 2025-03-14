@@ -47,6 +47,7 @@ public class CalcTCPServer {
             arithQuestion = inFromClient.readLine();
 
             while(arithQuestion != "DONE\n") {
+                System.out.println(arithQuestion + "n");
                 String currentAnswer = evalEx(arithQuestion) + "\n";
 
                 arithAnswer = currentAnswer;
@@ -56,7 +57,7 @@ public class CalcTCPServer {
             }
 
             //Message to indicate the connection is closed.
-            arithAnswer = "CLOSE";
+            arithAnswer = "CLOSE\n";
             outToClient.writeBytes(arithAnswer);            
         }
 

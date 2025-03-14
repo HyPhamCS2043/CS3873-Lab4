@@ -89,7 +89,8 @@ public class CalcTCPClient {
         long averageTime = ((endTime - startTime) / i) / 1000000;
 
         //Check if the server has received the last message: "DONE\n"
-        if (arithmeticOutput == "CLOSE") {
+        System.out.println(arithmeticOutput);
+        if (arithmeticOutput == "CLOSE\n") {
             //Print out the summary of the session
             System.out.println("Q&A END**********************\n" 
                             + "Total characters sent: " + totalCharSent + "\n"
