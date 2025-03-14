@@ -53,7 +53,7 @@ public class CalcTCPServer {
                 if (arithQuestion == "DONE") {
                     break;
                 }
-                String currentAnswer = evalEx(arithQuestion);
+                String currentAnswer = evalEx(arithQuestion) + "\n";
 
                 arithAnswer = currentAnswer;
                 outToClient.writeBytes(arithAnswer); 
