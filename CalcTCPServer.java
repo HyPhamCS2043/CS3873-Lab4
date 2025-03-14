@@ -68,7 +68,7 @@ public class CalcTCPServer {
      */
     private static String evalEx(String expression) {
         String result = "";
-
+        double answer = 0.0;
         
         return result;
     }
