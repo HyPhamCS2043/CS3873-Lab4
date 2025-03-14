@@ -73,12 +73,15 @@ public class CalcTCPClient {
 
         //Sending the server "DONE" to verify that there is no question left
         equation = "DONE\n";
-        outToCalcServer.writeBytes(equation + '\n');
+        outToCalcServer.writeBytes(equation);
         totalCharSent += equation.length();
 
         arithmeticOutput = inFromCalcServer.readLine();
-        totalCharReceived += arithmeticOutput.length();
 
+        if(arithmeticOutput != null) {
+            totalCharReceived += arithmeticOutput.length();
+        }
+        
         //Stop measuring execution time
         long endTime = System.nanoTime(); 
                 
