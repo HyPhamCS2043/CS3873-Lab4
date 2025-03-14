@@ -15,7 +15,7 @@ public class CalcTCPClient {
     public static void main(String args[]) throws Exception {
 
         //Input stream to accept String input from text file
-		BufferedReader inFromUser = new BufferedReader(new FileReader(args[0]));
+		BufferedReader inFromUser = new BufferedReader(new FileReader("question.txt"));
 
 		Socket clientSocket = new Socket(args[0], 6789);
 
@@ -96,9 +96,7 @@ public class CalcTCPClient {
         } else {
             System.out.println("Did not receive confirmation from Server\n");
         }
-    
-      
-        
+
         inFromUser.close();
 		clientSocket.close();
 	}
