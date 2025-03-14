@@ -47,8 +47,8 @@ public class CalcTCPServer {
             arithQuestion = inFromClient.readLine();
 
             while(arithQuestion != "DONE") {
-                //System.out.println(arithQuestion);
-                System.out.println(arithQuestion != "DONE");
+                System.out.println(arithQuestion);
+                System.out.println(arithQuestion == "DONE\n");
                 
                 if (arithQuestion == "DONE") {
                     break;
@@ -62,7 +62,7 @@ public class CalcTCPServer {
             }
 
             //Message to indicate the connection is closed.
-            arithAnswer = "CLOSE";
+            arithAnswer = "CLOSE\n";
             outToClient.writeBytes(arithAnswer);            
         }
 
