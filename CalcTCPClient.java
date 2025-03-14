@@ -33,7 +33,7 @@ public class CalcTCPClient {
 
        
         //integer i to denote question number        
-        int i = 1;
+        int i = 0;
 
         // Begin measuring execution time
         long startTime = System.nanoTime();
@@ -43,6 +43,8 @@ public class CalcTCPClient {
 
         // While-loop to check if there is any questions left in the text file
         while (equation != "") {
+
+            i++; 
 
             //Send the line of String to server for computation
             outToCalcServer.writeBytes(equation + '\n');
@@ -60,9 +62,15 @@ public class CalcTCPClient {
 
         }
 
+        equation = "DONE/n";
+        outToCalcServer.writeBytes(equation + '\n');
+    
         //Stop measuring execution time
         long endTime = System.nanoTime(); 
 		
+        //Calculating the average time 
+        long averageTime = ((endTime - startTime) / i) / 1000000;
+        
         inFromUser.close();
 		clientSocket.close();
 	}
