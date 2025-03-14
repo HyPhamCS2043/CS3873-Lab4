@@ -46,9 +46,9 @@ public class CalcTCPServer {
             //not DONE, keep reading in input.
             arithQuestion = inFromClient.readLine();
 
-            while(!arithQuestion.equals("DONE") ) {
+            while(!arithQuestion.trim().equals("DONE") ) {
                 System.out.println(arithQuestion);
-                System.out.print(arithQuestion.equals("DONE"));
+                System.out.println(arithQuestion.equals("DONE"));
                 if(arithQuestion.equals("DONE")) {
                     System.out.println("Why doesnt this end the loop");
                     break;
