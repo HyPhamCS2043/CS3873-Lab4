@@ -11,6 +11,7 @@
 
 import java.io.*;
 import java.net.*;
+import java.util.Stack;
 
 public class CalcTCPServer {
     public static void main (String args[]) throws Exception {
@@ -34,18 +35,18 @@ public class CalcTCPServer {
             System.out.println ("Connection to CalcTCPClient successful!");
 		    System.out.println ("Waiting for input from CalcTCPClient.....");
 
-            //
             BufferedReader inFromClient = new BufferedReader(
 					new InputStreamReader(connectionSocket.getInputStream()));
 
-            //
 			DataOutputStream outToClient = new DataOutputStream(
 					connectionSocket.getOutputStream());
 
             
+            //Read in the input string from the client. While the input string is
+            //not DONE, keep reading in input.
             arithQuestion = inFromClient.readLine();
 
-            while(arithQuestion != "DONE") {
+            while(arithQuestion != "DONE\n") {
                 String currentAnswer = evalEx(arithQuestion) + "\n";
 
                 arithAnswer = currentAnswer;
@@ -54,6 +55,7 @@ public class CalcTCPServer {
                 arithQuestion = inFromClient.readLine();
             }
 
+            //Message to indicate the connection is closed.
             arithAnswer = "CLOSE\n";
             outToClient.writeBytes(arithAnswer);            
         }
@@ -61,15 +63,48 @@ public class CalcTCPServer {
     }
 
     /*
-     * Private method evalEx() to parse input string fo an arithmetic expression 
+     * Private method evalEx() to parse input string fo an arithmetic expression
      * and calculate the answer.
-     * Input:String expression containing the input string
-     * Output:
+     * Assumption: This function assumes that the input expression only have two operands and one operator 
+     * Input: String expression containing the input string
+     * Output: String result
      */
     private static String evalEx(String expression) {
         String result = "";
+        double answer = 0.0;
 
+        //Remove the first and last whitespace from expression
+        expression.trim();
+
+        //Split the input expression based on white space
+        String[] term = expression.split("\\s+");
+
+        //Parse the double value from the first and second operand in the expression
+        double operand1 = Double.parseDouble(term[0]);
+        double operand2 = Double.parseDouble(term[2]);
+
+        //Depending on the operator, calculate the corresponding operation 
+        //between operand 1 and 2.
+        String operator = term[1];
+        switch(operator) {
+            case "+":
+                answer = operand1 + operand2;
+                break;
+            case "-":
+                answer = operand1 - operand2;
+                break;
+            case "*":
+                answer = operand1 * operand2;
+                break;
+            case "/":
+                answer = operand1 / operand2;
+                break;
+        }
         
+
+        result = String.valueOf(answer);
         return result;
     }
+
+
 }
