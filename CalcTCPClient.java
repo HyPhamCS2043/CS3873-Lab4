@@ -47,7 +47,7 @@ public class CalcTCPClient {
         equation = inFromUser.readLine();
 
         // While-loop to check if there is any questions left in the text file
-        while (equation != "") {
+        while (equation != null) {
 
             i++; 
 
