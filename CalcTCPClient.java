@@ -52,7 +52,7 @@ public class CalcTCPClient {
             i++; 
 
             //Send the line of String to server for computation
-            outToCalcServer.writeBytes(equation + "\n");
+            outToCalcServer.writeBytes(equation);
 
             totalCharSent += equation.length();
 

@@ -50,6 +50,9 @@ public class CalcTCPServer {
                 //System.out.println(arithQuestion);
                 System.out.println(arithQuestion != "DONE");
                 
+                if (arithQuestion == "DONE") {
+                    break;
+                }
                 String currentAnswer = evalEx(arithQuestion);
 
                 arithAnswer = currentAnswer;
