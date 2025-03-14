@@ -47,12 +47,9 @@ public class CalcTCPServer {
             arithQuestion = inFromClient.readLine();
 
             while(!arithQuestion.trim().equals("DONE") ) {
-                System.out.println(arithQuestion);
-                System.out.println(arithQuestion.equals("DONE"));
-                if(arithQuestion.equals("DONE")) {
-                    System.out.println("Why doesnt this end the loop");
-                    break;
-                }
+                //System.out.println(arithQuestion);
+                System.out.println(arithQuestion == "DONE");
+                
                 String currentAnswer = evalEx(arithQuestion);
 
                 arithAnswer = currentAnswer;
