@@ -48,6 +48,10 @@ public class CalcTCPServer {
 
             while(!arithQuestion.equals("DONE") ) {
                 System.out.println(arithQuestion + "\n");
+                if(arithQuestion == "DONE") {
+                    System.out.println("Why doesnt this end the loop");
+                    break;
+                }
                 String currentAnswer = evalEx(arithQuestion) + "\n";
 
                 arithAnswer = currentAnswer;
