@@ -59,7 +59,7 @@ public class CalcTCPServer {
             }
 
             //Message to indicate the connection is closed.
-            arithAnswer = "CLOSE\n";
+            arithAnswer = "CLOSE";
             outToClient.writeBytes(arithAnswer);            
         }
 
